@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KidsLearn</title>
+  <meta name="description" content="A magical place where children 4–10 learn through stories, math games and life skills." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">📘 KidsLearn</div>
+    <button class="burger" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="stories.html">Stories</a>
+      <a href="math.html">Math Games</a>
+      <a href="life.html">Life Lessons</a>
+      <a href="#happy">Happy Kids</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Making learning fun for children aged 4–10!</h1>
+    <p>A magical place where children discover amazing stories, solve fun math puzzles, and learn important life skills!</p>
+    <div class="cta">
+      <a class="btn primary" href="start-learning.html">✨ Start Learning!</a>
+      <a class="btn outline" href="#math">Explore Math Fun</a>
+    </div>
+  </section>
+
+  <section class="stats">
+  <a href="stories.html" class="card-link">
+    <div class="card">50+<br>Stories</div>
+  </a>
+  <a href="math.html" class="card-link">
+    <div class="card">30+<br>Math Games</div>
+  </a>
+  <a href="life.html" class="card-link">
+    <div class="card">25+<br>Life Lessons</div>
+  </a>
+  <a href="#happy" class="card-link">
+    <div class="card">1000+<br>Happy Kids</div>
+  </a>
+</section>
+
+  <section id="stories" class="panel">
+  <h2>📖 Story of the Day</h2>
+  <div id="story-display"></div>
+  <button onclick="showRandomStory()">New Story</button>
+  <button onclick="showRandomStory()">Next Story</button>
+</section>
+
+  <section id="stories" class="panel">
+    <h2>📖 Stories</h2>
+    <p>Interactive stories that build imagination and reading skills.</p>
+  </section>
+
+  <section id="math" class="panel">
+    <h2>🔢 Math Games</h2>
+    <p>Fun puzzles and number adventures for young learners.</p>
+  </section>
+
+  <section id="life" class="panel">
+    <h2>⭐ Life Lessons</h2>
+    <p>Teamwork, kindness and everyday skills through play.</p>
+  </section>
+
+  <section id="happy" class="panel">
+    <h2>🌱 Happy Kids</h2>
+    <p>Smiles, feedback and success from our little learners.</p>
+  </section>
+
+  <footer class="footer">
+    © <span id="year"></span> KidsLearn — Made by Bogdan Turcu
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>© 2025 <strong>KidsLearn</strong> — Created with ❤️ by <strong class="signature">Bogdan Medvetchi</strong></p>
+    <p>All rights reserved. Reproduction or redistribution of this content is prohibited without written permission.</p>
+    <p class="legal">Made in Belgium 🇧🇪 | Inspired by curiosity and creativity 🌤️</p>
+  </div>
+</footer>
+</html>
