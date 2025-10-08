@@ -27,23 +27,34 @@
     <p>A magical place where children discover amazing stories, solve fun math puzzles, and learn important life skills!</p>
     <div class="cta">
       <a class="btn primary" href="start-learning.html">✨ Start Learning!</a>
-      <a class="btn outline" href="#math">Explore Math Fun</a>
+      <a class="btn outline" href="math.html">Explore Math Fun</a>
     </div>
   </section>
 
   <section class="stats">
-  <a href="stories.html" class="card-link">
-    <div class="card">50+<br>Stories</div>
+  <a href="start-learning.html" class="stat-card">
+    <h3>📖 Story of the Day</h3>
   </a>
-  <a href="math.html" class="card-link">
-    <div class="card">30+<br>Math Games</div>
+
+  <a href="stories.html" class="stat-card">
+    <h3>📚 Stories</h3>
+    <p>50+</p>
   </a>
-  <a href="life.html" class="card-link">
-    <div class="card">25+<br>Life Lessons</div>
+
+  <a href="math.html" class="stat-card">
+    <h3>🧮 Math Games</h3>
+    <p>30+</p>
   </a>
-  <a href="#happy" class="card-link">
-    <div class="card">10+<br>Happy Kids</div>
+
+  <a href="life.html" class="stat-card">
+    <h3>🌱 Life Lessons</h3>
+    <p>25+</p>
   </a>
+
+  <div class="stat-card inactive">
+    <h3>⭐ Happy Kids</h3>
+    <p>10+</p>
+  </div>
 </section>
 
   <section id="stories" class="panel">
@@ -53,20 +64,20 @@
   <button onclick="showRandomStory()">Next Story</button>
 </section>
 
-  <section id="stories" class="panel">
-    <h2>📖 Stories</h2>
-    <p>Interactive stories that build imagination and reading skills.</p>
-  </section>
+  <section id="stories" class="panel link-panel" onclick="location.href='stories.html'">
+  <h2>📚 Stories</h2>
+  <p>Interactive stories that build imagination and reading skills.</p>
+</section>
 
-  <section id="math" class="panel">
-    <h2>🔢 Math Games</h2>
-    <p>Fun puzzles and number adventures for young learners.</p>
-  </section>
+<section id="math" class="panel link-panel" onclick="location.href='math.html'">
+  <h2>🧮 Math Games</h2>
+  <p>Fun puzzles and number adventures for young learners.</p>
+</section>
 
-  <section id="life" class="panel">
-    <h2>⭐ Life Lessons</h2>
-    <p>Teamwork, kindness and everyday skills through play.</p>
-  </section>
+<section id="life" class="panel link-panel" onclick="location.href='life.html'">
+  <h2>🌱 Life Lessons</h2>
+  <p>Teamwork, kindness and everyday skills through play.</p>
+</section>
 
   <section id="happy" class="panel">
     <h2>🌱 Happy Kids</h2>

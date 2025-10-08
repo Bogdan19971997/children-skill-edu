@@ -170,6 +170,19 @@ function checkAnswer(correct) {
     feedback.style.color = "red";
   }
 }
+// ============================
+// AUTO COLOR MATH EQUATIONS
+// ============================
+document.addEventListener("DOMContentLoaded", () => {
+  const paragraphs = document.querySelectorAll("p");
+
+  paragraphs.forEach(p => {
+    p.innerHTML = p.innerHTML.replace(
+      /(\d+\s*[\+\-\\/=]\s\d+)/g,
+      '<span class="equation">$1</span>'
+    );
+  });
+});
 // === STORIES DATABASE ===
 const stories = [
 {
@@ -612,14 +625,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const storiesToShow = stories.slice(start, end);
 
     storiesToShow.forEach(story => {
-      const storyDiv = document.createElement("div");
-      storyDiv.classList.add("story-card");
-      storyDiv.innerHTML = `
-        <h3>${story.title}</h3>
-        <p>${story.text}</p>
-      `;
-      allContainer.appendChild(storyDiv);
-    });
+  const storyDiv = document.createElement("div");
+  storyDiv.classList.add("story-card");
+
+  storyDiv.innerHTML = `
+    <div class="corner-tag"></div>
+    <h3>${story.title}</h3>
+    <p>${story.text}</p>
+  `;
+
+  allContainer.appendChild(storyDiv);
+});
 
     // Update page info
     const totalPages = Math.ceil(stories.length / perPage);
@@ -682,11 +698,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
   lifeLessons.forEach(lesson => {
     const div = document.createElement("div");
-    div.classList.add("story-card");
+    div.classList.add("lesson-card");
+
+    // 🔹 Aici e noutatea — colțul îndoit
     div.innerHTML = `
+      <div class="corner-tag-green"></div>
       <h3>${lesson.title}</h3>
       <p>${lesson.text}</p>
     `;
+
     lifeContainer.appendChild(div);
   });
 });
@@ -697,4 +717,7 @@ window.addEventListener("scroll", function() {
   const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
 
   if (isVisible) footer.classList.add("visible");
+});
+window.addEventListener("scroll", function() {
+  document.body.style.backgroundPositionY = "${window.scrollY * 0.3}px";
 });
