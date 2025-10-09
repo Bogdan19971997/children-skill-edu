@@ -1,0 +1,25 @@
+{
+  "name": "Children Skill Edu",
+  "short_name": "SkillEdu",
+  "start_url": "https://bogdan19971997.github.io/children-skill-edu/",
+  "scope": "https://bogdan19971997.github.io/children-skill-edu/",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "background_color": "#ffffff",
+  "theme_color": "#317EFB",
+  "description": "An educational app for children to develop new skills.",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
