@@ -1,13 +1,41 @@
 {
-  "background_color": "#f5f5f5",
-  "description": "Educational  stories and games for kids aged 4-10",
-  "dir": "ltr",
+  "id": "children-skill-edu",
+  "name": "Children Skill Edu",
+  "short_name": "SkillEdu",
+  "description": "An educational app for children to develop new skills through fun games and lessons.",
+  "start_url": "https://bogdan19971997.github.io/children-skill-edu/",
+  "scope": "https://bogdan19971997.github.io/children-skill-edu/",
   "display": "standalone",
-  "name": "bogdan19971997.github",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "bogdan19971997.github",
-  "start_url": "/",
-  "theme_color": "#ffffff",
-  "id": "children-skill.app"
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#317EFB",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "kids", "learning"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Main menu"
+    },
+    {
+      "src": "icons/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Learning section"
+    }
+  ]
 }
