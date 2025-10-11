@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KidsLearn — Level 7 Years</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-image: url("children-img.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Poppins', sans-serif;
+      color: #2b1d0f;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255,255,255,0.9);
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    #score-display {
+      padding: 10px 16px;
+      background-color: rgba(255,255,255,0.85);
+      color: #2b1d0f;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .lesson-box {
+      background-color: rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 2rem auto;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    input[type="number"] {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 1rem;
+      width: 120px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .shake {
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    #fun-gif {
+      margin-top: 1rem;
+      max-width: 150px;
+      display: none;
+    }
+
+    footer {
+      margin-top: 60px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">📘 KidsLearn</div>
+    <nav class="nav">
+      <a href="stories.html">Stories</a>
+      <a href="math.html">Math Games</a>
+      <a href="life.html">Life Lessons</a>
+    </nav>
+    <div id="score-display">Score: 0 / 25</div>
+  </header>
+
+  <main class="content">
+    <div class="lesson-box" id="exercise-container">
+      <p>Loading...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 KidsLearn — Made by Bogdan Turcu</p>
+  </footer>
+
+  <script>
+    function generateExercises7(count) {
+      const ops = ['+', '-'];
+      const arr = [];
+      while (arr.length < count) {
+        const a = Math.floor(Math.random() * 20) + 1;  // 1..20
+        const b = Math.floor(Math.random() * 20);
+        const op = ops[Math.floor(Math.random() * ops.length)];
+        let ans = op === '+' ? a + b : a - b;
+        if (ans < 0) continue;
+        const q = `${a} ${op} ${b} =`;
+        if (!arr.some(e => e.question === q)) {
+          arr.push({ question: q, answer: ans });
+        }
+      }
+      return arr;
+    }
+
+    const totalExercises = 50;
+    const target = 25;
+    const exercises = generateExercises7(totalExercises);
+
+    const encouragingMessages = [
+      "You can do it! 🙌",
+      "Great effort! ✨",
+      "Mistakes help us learn! 💡",
+      "Don’t give up! 🚀",
+      "So close! 😄"
+    ];
+
+    let currentIndex = 0;
+    let correctCount = 0;
+
+    function updateScoreDisplay() {
+      document.getElementById('score-display').textContent =
+        `Score: ${correctCount} / ${target}`;
+    }
+
+    function loadExercise() {
+      if (correctCount >= target || currentIndex >= exercises.length) {
+        showEndScreen();
+        return;
+      }
+      const ex = exercises[currentIndex];
+      const container = document.getElementById("exercise-container");
+      container.innerHTML = `
+        <h2>${ex.question}</h2>
+        <input type="number" id="userAnswer" placeholder="Your answer" />
+        <br/>
+        <button onclick="checkAnswer(${ex.answer})">Check</button>
+        <p id="feedback"></p>
+        <img id="fun-gif" src="https://media.giphy.com/media/L95W4wv8nnb9K/giphy.gif" alt="Try again" />
+      `;
+
+      const input = document.getElementById("userAnswer");
+      input.focus();
+      input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+          checkAnswer(ex.answer);
+        }
+      });
+
+      updateScoreDisplay();
+    }
+
+    function checkAnswer(correct) {
+      const input = document.getElementById("userAnswer");
+      const user = parseInt(input.value);
+      const feedback = document.getElementById("feedback");
+      const gif = document.getElementById("fun-gif");
+
+      feedback.textContent = "";
+      gif.style.display = "none";
+
+      if (isNaN(user)) {
+        feedback.textContent = "⚠️ Enter a number!";
+        feedback.style.color = "orange";
+        return;
+      }
+
+      if (user === correct) {
+        feedback.textContent = "✅ Correct!";
+        feedback.style.color = "green";
+        confetti({
+          particleCount: 120,
+          spread: 60,
+          origin: { y: 0.6 }
+        });
+        correctCount += 1;
+      } else {
+        input.classList.add("shake");
+        setTimeout(() => input.classList.remove("shake"), 300);
+        const msg = encouragingMessages[Math.floor(Math.random() * encouragingMessages.length)];
+        feedback.textContent = "❌ " + msg;
+        feedback.style.color = "red";
+        gif.style.display = "inline-block";
+      }
+
+      currentIndex += 1;
+      setTimeout(loadExercise, 600);
+    }
+
+    function showEndScreen() {
+      const container = document.getElementById("exercise-container");
+      container.innerHTML = `
+        <h2>🎉 You completed the level!</h2>
+        <p>Final Score: ${correctCount} / ${target}</p>
+        <button onclick="goToNextLevel()">Next Level 🚀</button>
+      `;
+      updateScoreDisplay();
+    }
+
+    function goToNextLevel() {
+      window.location.href = "8years.html"; // ajustează dacă pagina următoare e alta
+    }
+
+    document.addEventListener("DOMContentLoaded", loadExercise);
+  </script>
+
+</body>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>© 2025 <strong>KidsLearn</strong> — Created with ❤️ by <strong class="signature">Bogdan Medvetchi</strong></p>
+    <p>All rights reserved. Reproduction or redistribution of this content is prohibited without written permission.</p>
+    <p class="legal">Made in Belgium 🇧🇪 | Inspired by curiosity and creativity 🌤️</p>
+  </div>
+</footer>
+</html>

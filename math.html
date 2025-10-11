@@ -6,6 +6,7 @@
   <title>Math Exercises | KidsLearn</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
+  <link rel="4-year" href="4-6years.html" />
 </head>
 <body>
   <header class="topbar">
@@ -19,11 +20,15 @@
   <main class="content">
     <h1>Choose Your Math Level</h1>
 
-    <div class="math-buttons">
-      <button onclick="loadMath('4-6')">Ages 4–6</button>
-      <button onclick="loadMath('6-8')">Ages 6–8</button>
-      <button onclick="loadMath('8-10')">Ages 8–10</button>
-    </div>
+    <section class="panel age-categories">
+  <h2>🎯 Choose Your Math Level</h2>
+  <div class="age-grid">
+    <a href="4-6years.html" class="age-card">👶 4–6 years</a>
+    <a href="6-8years.html" class="age-card">🧒 6–8 years</a>
+    <a href="8-10years.html" class="age-card">👦 8–10 years</a>
+  </div>
+</section>
+
 
     <div id="math-display" class="math-box"></div>
     <div id="answer-section" class="answer-box"></div>
@@ -38,3 +43,4 @@
   </div>
 </footer>
 </html>
+
