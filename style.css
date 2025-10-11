@@ -784,4 +784,40 @@ h1 + p {
     color: #317EFB;
   }
 }
+/* --- PHONE VERSION (sub 768px) --- */
+@media (max-width: 767px) {
+
+  /* Ascunde complet meniul din dreapta (nav-ul) */
+  header .nav {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Lasă doar cele 3 linii vizibile */
+  header .burger {
+    display: inline-block !important;
+    color: #317EFB;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* --- LAPTOP VERSION (peste 768px) --- */
+@media (min-width: 768px) {
+
+  /* Arată meniul complet normal */
+  header .nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Ascunde cele 3 linii (burger menu) */
+  header .burger {
+    display: none !important;
+  }
+}
 
