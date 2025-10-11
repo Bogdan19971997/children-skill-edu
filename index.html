@@ -107,6 +107,17 @@
   </footer>
 
   <script src="script.js"></script>
+  // Mobile menu toggle
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav');
+
+burger.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  burger.setAttribute(
+    'aria-expanded',
+    burger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+  );
+});
 </body>
 
 <footer class="site-footer">
